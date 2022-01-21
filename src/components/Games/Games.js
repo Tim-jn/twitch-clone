@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../../api'
+import { Link } from 'react-router-dom'
 
 export default function Games() {
   const [games, setGames] = useState([])
@@ -7,7 +8,7 @@ export default function Games() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.get('https://api.twitch.tv/helix/games/top')
-      //   console.log(result)
+      //   console.log(result);
 
       let dataArray = result.data.data
       let finalArray = dataArray.map((game) => {
@@ -32,7 +33,17 @@ export default function Games() {
             <img src={game.box_art_url} alt="Game" className="cardImg" />
             <div className="cardBodyGames">
               <h5 className="gameTitle">{game.name}</h5>
-              <div className="cardBtn">Regarder {game.name}</div>
+              <Link
+                className="link"
+                to={{
+                  pathname: 'game/' + game.name,
+                  state: {
+                    gameID: game.id,
+                  },
+                }}
+              >
+                <div className="cardBtn">Regarder {game.name}</div>
+              </Link>
             </div>
           </div>
         ))}

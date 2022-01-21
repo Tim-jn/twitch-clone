@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../../api'
+import { Link } from 'react-router-dom'
 
 export default function TopStreams() {
   const [channels, setChannels] = useState([])
@@ -83,7 +84,12 @@ export default function TopStreams() {
               <p className="streamText viewers">
                 Viewers : {channel.viewer_count}
               </p>
-              <div className="cardBtn">Regarder {channel.user_name}</div>
+              <Link
+                className="link"
+                to={{ pathname: `/live/${channel.login}` }}
+              >
+                <div className="cardBtn">Regarder {channel.user_name}</div>
+              </Link>
             </div>
           </div>
         ))}

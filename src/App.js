@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Games />} />
           <Route exact path="/top-streams" element={<TopStreams />} />
-          <Route exact path="/live" element={<Live />} />
+          <Route exact path="/live/:slug" element={<Live />} />
         </Routes>
       </div>
     </Router>

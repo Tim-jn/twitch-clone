@@ -72,7 +72,7 @@ export default function TopStreams() {
   }, [])
   return (
     <div>
-      <h1 className="gamesTitles">Stream les plus populaires</h1>
+      <h1 className="gamesTitle">Stream les plus populaires</h1>
       <div className="flexHome">
         {channels.map((channel, index) => (
           <div key={index} className="streamCard">

@@ -358,7 +358,7 @@ body {
   color: #19171c;
   display: grid;
   height: 156px;
-  width: calc(100% -340px);
+  width: calc(100% - 340px);
   grid-template: repeat(3, 35px) / 1fr 1fr;
   margin-top: 5px;
 }
@@ -369,6 +369,10 @@ body {
   margin-left: 5px;
   font-weight: 400;
   font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 
 .viewer {

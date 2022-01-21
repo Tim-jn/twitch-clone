@@ -1,6 +1,7 @@
 import twitchIcon from './IconTwitch.svg'
 import searchIcon from './IconSearch.svg'
 import menuIcon from './IconMenu.svg'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -8,13 +9,27 @@ export default function Header() {
       <nav className="headerTop">
         <ul className="listMenu">
           <li className="linkNav">
-            <img src={twitchIcon} alt="Twitch icon" className="twitchIcon" />
+            <Link className="link" to="/">
+              <img src={twitchIcon} alt="Twitch icon" className="twitchIcon" />
+            </Link>
           </li>
-          <li className="linkNav">Top Games</li>
-          <li className="linkNav">Top Streams</li>
+          <li className="linkNav">
+            <Link className="link" to="/top-games">
+              Top Games
+            </Link>
+          </li>
+          <li className="linkNav">
+            <Link className="link" to="/top-streams">
+              Top Streams
+            </Link>
+          </li>
           <li className="linkNav">
             <form action="" className="formSubmit">
-              <input type="text" className="inputSearch" placeholder="Rechercher" />
+              <input
+                type="text"
+                className="inputSearch"
+                placeholder="Rechercher"
+              />
               <button type="submit">
                 <img
                   src={searchIcon}

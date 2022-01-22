@@ -68,32 +68,32 @@ export default function GameStreams() {
       <h3 className="streamsGamesSubtitle">
         <strong className="textColored">{viewers}</strong> personnes regardent{' '}
         {slug}
-        <div className="flexHome">
-          {streamData.map((stream, index) => (
-            <div key={index} className="streamsGameCard">
-              <img
-                src={stream.thumbnail_url}
-                alt="Game card"
-                className="cardImg"
-              />
-              <div className="cardBodyGameStreams">
-                <h5 className="streamCardTitle">{stream.user_name}</h5>
-                <p className="streamText">
-                  Nombre de viewers : {stream.viewer_count}
-                </p>
-                <Link
-                  className="link"
-                  to={{
-                    pathname: `/live/${stream.user_login}`,
-                  }}
-                >
-                  <div className="cardBtn">Regarder {stream.user_name}</div>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
       </h3>
+      <div className="flexHome">
+        {streamData.map((stream, index) => (
+          <div key={index} className="streamsGameCard">
+            <img
+              src={stream.thumbnail_url}
+              alt="Game card"
+              className="cardImg"
+            />
+            <div className="cardBodyGameStreams">
+              <h5 className="streamCardTitle">{stream.user_name}</h5>
+              <p className="streamText">
+                Nombre de viewers : {stream.viewer_count}
+              </p>
+              <Link
+                className="link"
+                to={{
+                  pathname: `/live/${stream.user_login}`,
+                }}
+              >
+                <div className="cardBtn">Regarder {stream.user_name}</div>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

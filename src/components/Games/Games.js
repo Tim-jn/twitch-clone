@@ -18,7 +18,6 @@ export default function Games() {
         game.box_art_url = newUrl
         return game
       })
-
       setGames(finalArray)
     }
     fetchData()
@@ -37,10 +36,8 @@ export default function Games() {
                 className="link"
                 to={{
                   pathname: 'game/' + game.name,
-                  state: {
-                    gameID: game.id,
-                  },
                 }}
+                state={{ gameID: game.id }}
               >
                 <div className="cardBtn">Regarder {game.name}</div>
               </Link>

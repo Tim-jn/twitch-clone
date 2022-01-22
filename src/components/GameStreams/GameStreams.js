@@ -5,7 +5,6 @@ import { useLocation, useParams, Link } from 'react-router-dom'
 export default function GameStreams() {
   let { slug } = useParams()
   let location = useLocation()
-  console.log(location)
 
   const [streamData, setStreamData] = useState([])
   const [viewers, setViewers] = useState(0)
@@ -61,7 +60,7 @@ export default function GameStreams() {
       setStreamData(finalArray)
     }
     fetchData()
-  }, [location])
+  }, [location.state.gameID])
 
   return (
     <div>
@@ -85,7 +84,7 @@ export default function GameStreams() {
                 <Link
                   className="link"
                   to={{
-                    pathname: `/live/${stream.login}`,
+                    pathname: `/live/${stream.user_login}`,
                   }}
                 >
                   <div className="cardBtn">Regarder {stream.user_name}</div>

@@ -3,10 +3,12 @@ import searchIcon from './IconSearch.svg'
 import menuIcon from './IconMenu.svg'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import closeIcon from './IconClose.svg'
 
 export default function Header() {
   const [menu, setMenu] = useState(false)
   const [smallScreen, setSmallScreen] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 900px)')
@@ -30,12 +32,26 @@ export default function Header() {
     setMenu(!menu)
   }
 
+  const hideMenu = () => {
+    if (menu === true) {
+      setMenu(!menu)
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
+  const handleKeyPress = (e) => {
+    setSearchInput(e.target.value)
+  }
+
   return (
     <div>
       <nav className="headerTop">
         {(menu || !smallScreen) && (
           <ul className="listMenu">
-            <li className="linkNav">
+            <li onClick={hideMenu} className="linkNav">
               <Link className="link" to="/">
                 <img
                   src={twitchIcon}
@@ -44,30 +60,38 @@ export default function Header() {
                 />
               </Link>
             </li>
-            <li className="linkNav">
+            <li onClick={hideMenu} className="linkNav">
               <Link className="link" to="/top-games">
                 Top Games
               </Link>
             </li>
-            <li className="linkNav">
+            <li onClick={hideMenu} className="linkNav">
               <Link className="link" to="/top-streams">
                 Top Streams
               </Link>
             </li>
             <li className="linkNav">
-              <form action="" className="formSubmit">
+              <form action="" className="formSubmit" onSubmit={handleSubmit}>
                 <input
+                  required
+                  value={searchInput}
+                  onChange={(e) => handleKeyPress(e)}
                   type="text"
                   className="inputSearch"
                   placeholder="Rechercher"
                 />
-                <button type="submit">
-                  <img
-                    src={searchIcon}
-                    alt="Search icon"
-                    className="searchIcon"
-                  />
-                </button>
+                <Link
+                  className="link"
+                  to={{ pathname: `/resultats/${searchInput}` }}
+                >
+                  <button type="submit">
+                    <img
+                      src={searchIcon}
+                      alt="Search icon"
+                      className="searchIcon"
+                    />
+                  </button>
+                </Link>
               </form>
             </li>
           </ul>
@@ -76,7 +100,7 @@ export default function Header() {
       <div className="resMenuBtn">
         <img
           onClick={toggleNavRes}
-          src={menuIcon}
+          src={!menu ? menuIcon : closeIcon}
           alt="Menu icon"
           className="menuIcon"
         />

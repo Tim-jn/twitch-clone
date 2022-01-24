@@ -82,7 +82,7 @@ export default function Header() {
                 />
                 <Link
                   className="link"
-                  to={{ pathname: `/resultats/${searchInput}` }}
+                  to={{ pathname: `/results/${searchInput}` }}
                 >
                   <button type="submit">
                     <img

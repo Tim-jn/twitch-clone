@@ -17,6 +17,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route exact path="/" element={<Games />} />
+          <Route exact path="/top-games" element={<Games />} />
           <Route exact path="/top-streams" element={<TopStreams />} />
           <Route exact path="/live/:slug" element={<Live />} />
           <Route exact path="/game/:slug" element={<GameStreams />} />

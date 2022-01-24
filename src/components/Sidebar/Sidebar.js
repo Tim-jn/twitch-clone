@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import api from '../../api'
+import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
   const [topStreams, setTopStreams] = useState([])
@@ -73,19 +74,25 @@ export default function Sidebar() {
       <h2 className="sidebarTitle">Chaînes recommandées</h2>
       <ul className="streamList">
         {topStreams.map((stream, index) => (
-          <li key={index} className="containerFlexSidebar">
-            <img
-              src={stream.truePic}
-              alt="User profile"
-              className="profilePicture"
-            />
-            <div className="streamUser">{stream.user_name}</div>
-            <div className="viewerRight">
-              <div className="redDot"></div>
-              <div>{stream.viewer_count}</div>
-            </div>
-            <div className="gameNameSidebar">{stream.gameName}</div>
-          </li>
+          <Link
+            key={index}
+            className="link"
+            to={{ pathname: `/live/${stream.login}` }}
+          >
+            <li key={index} className="containerFlexSidebar">
+              <img
+                src={stream.truePic}
+                alt="User profile"
+                className="profilePicture"
+              />
+              <div className="streamUser">{stream.user_name}</div>
+              <div className="viewerRight">
+                <div className="redDot"></div>
+                <div>{stream.viewer_count}</div>
+              </div>
+              <div className="gameNameSidebar">{stream.gameName}</div>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
